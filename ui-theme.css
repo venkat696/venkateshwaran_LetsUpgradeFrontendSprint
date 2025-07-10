@@ -1,0 +1,537 @@
+/* css/style.css (Generated from SCSS) */
+@property --angle { /* Custom property for glowing animation */
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box; /* Include padding and border in element's total width/height */
+  margin: 0; /* Remove default margins */
+  padding: 0; /* Remove default paddings */
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #0f0f0f;
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Header */
+.main-header {
+  background-color: #1a1a1a;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Navbar Toggler (Hamburger Icon) - Mobile Only */
+.navbar-toggler {
+  display: block; /* Show by default for mobile */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  position: relative;
+  z-index: 11;
+}
+
+.toggler-icon {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #e0e0e0;
+  border-radius: 2px;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.toggler-icon::before,
+.toggler-icon::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: #e0e0e0;
+  border-radius: 2px;
+  transition: transform 0.3s ease, top 0.3s ease, opacity 0.3s ease; /* Animation for bars */
+}
+
+.toggler-icon::before {
+  top: -8px;
+}
+
+.toggler-icon::after {
+  top: 8px;
+}
+
+/* Animation for toggler icon when active (menu open) */
+.navbar-toggler[aria-expanded="true"] .toggler-icon {
+  background-color: transparent; /* Hide middle bar on open */
+}
+
+.navbar-toggler[aria-expanded="true"] .toggler-icon::before {
+  transform: rotate(45deg); /* Rotate for X shape */
+  top: 0;
+}
+
+.navbar-toggler[aria-expanded="true"] .toggler-icon::after {
+  transform: rotate(-45deg); /* Rotate for X shape */
+  top: 0;
+}
+
+/* Navbar Collapse (Menu Content) - Mobile Default */
+.navbar-collapse {
+  width: 100%;
+  display: none; /* Hidden by default on mobile */
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: #1a1a1a;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 9;
+}
+
+.navbar-collapse.active {
+  display: flex; /* Show when active */
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.nav-item {
+  margin-bottom: 0.5rem;
+}
+
+.nav-link {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #e0e0e0;
+  transition: color 0.3s; /* Smooth color transition on hover */
+  padding: 0.8rem 0;
+  display: block;
+  text-align: center;
+}
+
+.nav-link:hover {
+  color: #9a7bff; /* Hover color for nav links */
+}
+
+/* Desktop Styles - Media Query */
+@media (min-width: 768px) {
+  .navbar-toggler {
+    display: none; /* Hide toggler on larger screens */
+  }
+
+  .navbar-collapse {
+    display: flex !important; /* Override mobile display to always show on desktop */
+    flex-direction: row;
+    width: auto;
+    position: static;
+    background-color: transparent;
+    padding: 0;
+    justify-content: flex-end;
+    flex-grow: 1;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    gap: 1.5rem;
+    width: auto;
+  }
+
+  .nav-item {
+    margin-bottom: 0;
+  }
+
+  .nav-link {
+    padding: 0.5rem 0;
+    text-align: left;
+  }
+}
+
+/* Social Media Icons are only in the footer now */
+.footer-social-icons img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+/* Hero Section */
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5rem 2rem;
+  background: linear-gradient(to right, #1f1f1f, #292929);
+  color: #e0e0e0;
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  border-radius: 20px;
+}
+
+.hero-content {
+  flex: 1;
+  text-align: right;
+  padding-left: 2rem;
+}
+
+.hero-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-bottom: 2rem;
+}
+
+.hero-search-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.hero-search-input {
+  padding: 0.75rem 1rem;
+  width: 300px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background-color: #333;
+  color: #e0e0e0;
+  transition: background-color 0.3s ease;
+}
+
+.hero-search-input::placeholder {
+  color: #999;
+}
+
+/* Search Bar Focus/Click Effect */
+.hero-search-input:focus {
+  background-color: #444;
+  box-shadow: 0 0 0 2px #9a7bff; /* Glow effect on focus */
+}
+
+/* Adjustments for smaller screens (hero section) */
+@media (max-width: 767px) {
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+
+  .hero-image {
+    max-width: 250px;
+    margin-bottom: 2rem;
+  }
+
+  .hero-image img {
+    max-width: 100%;
+  }
+
+  .hero-content {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .hero-search-container {
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .hero-search-input,
+  .hero-search-container .glowing-btn.search-btn {
+    width: 100%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Glowing Card */
+.glowing-card {
+  position: relative;
+  border-radius: 20px;
+  background: black;
+  overflow: hidden;
+  z-index: 0;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Hover animation */
+}
+
+.glowing-card:hover {
+  transform: translateY(-5px); /* Lift card on hover */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Shadow on hover */
+}
+
+.glowing-card::before,
+.glowing-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: conic-gradient(from var(--angle), #6b00b6, #1a00ff, #6b00b6);
+  z-index: -2;
+  animation: rotateGlow 3s linear infinite; /* Glowing rotation animation */
+}
+
+.glowing-card::before {
+  filter: blur(20px);
+  opacity: 0.7;
+}
+
+.glowing-card::after {
+  margin: 3px;
+  background: black;
+  z-index: -1;
+}
+
+@keyframes rotateGlow { /* Keyframes for continuous rotation */
+  to {
+    --angle: 360deg;
+  }
+}
+
+/* Card Inner */
+.food-card img {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Section Layout */
+.section-container {
+  padding: 4rem 2rem;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Grid */
+.card-grid, .category-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+.card-content h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-content p {
+  font-size: 0.95rem;
+  color: #bbb;
+  margin-bottom: 1rem;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-bottom: 1rem;
+}
+
+/* Categories */
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Category Images - Consistent Size and shape */
+.category-item img {
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+/* Footer */
+.main-footer {
+  background-color: #1a1a1a;
+  padding: 3rem 2rem 1rem;
+  color: #e0e0e0;
+}
+
+.footer-content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.footer-section h4, .footer-section h3 {
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-section ul li a {
+  color: #ccc;
+  transition: color 0.3s; /* Smooth color transition on hover */
+}
+
+.footer-section ul li a:hover {
+  color: #9a7bff; /* Hover color for footer links */
+}
+
+.newsletter-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.footer-section input[type="email"] {
+  padding: 0.75rem;
+  border-radius: 10px;
+  border: none;
+  width: 200px;
+  background-color: #333;
+  color: #e0e0e0;
+}
+
+.footer-section input[type="email"]::placeholder {
+  color: #999;
+}
+
+.footer-social-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Social icons sizing */
+.footer-social-icons a img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  transition: transform 0.3s ease; /* Smooth transform on hover */
+}
+
+.footer-social-icons a:hover img {
+  transform: translateY(-3px); /* Lift icon on hover */
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid #333;
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 2rem;
+}
+
+/* Glowing Button Styles */
+.glowing-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #6b00b6, #1a00ff);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease; /* All properties transition on hover */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.glowing-btn:hover {
+  background: linear-gradient(90deg, #1a00ff, #6b00b6); /* Reverse gradient on hover */
+  transform: translateY(-2px); /* Lift button on hover */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* More pronounced shadow on hover */
+}
+
+/* Specific button adjustments */
+.hero-search-container .glowing-btn.search-btn {
+  margin-bottom: 0;
+  margin-left: 0.5em;
+}
+
+.card-btn {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  max-width: 100%;
+}
+
+.explore-more-btn-container .glowing-btn {
+  margin-bottom: 0;
+  margin-top: 3rem;
+  max-width: 250px;
+}
+
+.newsletter-form .glowing-btn.subscribe-btn {
+  margin-bottom: 0;
+  margin-top: 0;
+  max-width: 120px;
+}
