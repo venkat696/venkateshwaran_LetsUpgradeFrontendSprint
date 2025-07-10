@@ -5,7 +5,7 @@ Welcome to **Food.**, a modern, visually glowing recipe website made with HTML a
 ## Live Demo
 
 Planning to deploy on **Vercel**  
-(Example URL after deploy: https://food-recipe.vercel.app)
+(Example URL after deploy: https://food-ui-two.vercel.app/)
 
 ## Features
 
